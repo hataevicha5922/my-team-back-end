@@ -31,11 +31,13 @@ app.post('/uploads', checkAuth, upload.single('image'), (req, res) => {
 });
 
 app.use(express.json());
+
 app.use(
   cors({
-    origin: '*',
+    origin: ['https://my-team-back-end.herokuapp.com'],
   })
 );
+
 app.use('/uploads', express.static('uploads'));
 
 app.use('/auth', authRoute);
