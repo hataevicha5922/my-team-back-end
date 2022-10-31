@@ -32,19 +32,20 @@ app.post('/uploads', checkAuth, upload.single('image'), (req, res) => {
 
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: '*',
-  })
-);
+const corsOptions = {
+  origin: 'https://vercel.com/hataevicha5922/my-team-front-end',
+  optionsSuccessStatus: 200,
+};
 
-app.use('/uploads', express.static('uploads'));
+app.use(cors(corsOptions));
 
-app.use('/auth', authRoute);
-app.use('/users', usersRoute);
-app.use('/players', playersRoute);
-app.use('/teams', teamsRoute);
-app.use('/position', positionsRoute);
+app.use('/uploads', cors(corsOptions), express.static('uploads'));
+
+app.use('/auth', cors(corsOptions), authRoute);
+app.use('/users', cors(corsOptions), usersRoute);
+app.use('/players', cors(corsOptions), playersRoute);
+app.use('/teams', cors(corsOptions), teamsRoute);
+app.use('/position', cors(corsOptions), positionsRoute);
 // app.use('/upload', uploadRoute);
 
 db.Users.belongsTo(db.Teams);
