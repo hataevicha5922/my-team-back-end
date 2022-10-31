@@ -34,7 +34,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: 'https://vercel.com/hataevicha5922/my-team-front-end',
+    origin: ['https://vercel.com/hataevicha5922/my-team-front-end'],
   })
 );
 
