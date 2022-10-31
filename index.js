@@ -34,7 +34,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ['https://my-team-back-end.herokuapp.com'],
+    origin: ['https://my-team-front-end-hataevicha5922.vercel.app'],
   })
 );
 
