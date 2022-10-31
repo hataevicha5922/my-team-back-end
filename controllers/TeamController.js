@@ -42,6 +42,17 @@ const teamController = {
       res.status(400).json(error);
     }
   },
+  getTeamInfo: async (req, res) => {
+    try {
+      const id = req.body.id;
+      const team = await Teams.findOne({
+        where: { id: id },
+      });
+      res.status(200).json(team);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  },
   changeMyTeam: async (req, res) => {
     try {
       const id = req.body.id;

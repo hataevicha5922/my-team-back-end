@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-// const { Teams } = require('../models');
-// const { Users } = require('../models');
-// const verify = require('../assets/verifyToken');
 const {
   createTeam,
   getAllTeams,
   getMyTeam,
+  getTeamInfo,
   changeMyTeam,
 } = require('../controllers/TeamController');
 const teamCreateValidation = require('../validations/teams');
@@ -16,6 +14,7 @@ const handleValidationErrors = require('../utils/handleValidationErrors');
 router.get('/', getAllTeams);
 
 router.get('/byId/:id', checkAuth, getMyTeam);
+router.post('/:id', checkAuth, getTeamInfo);
 
 router.post(
   '/',
