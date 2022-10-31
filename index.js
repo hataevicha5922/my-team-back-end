@@ -31,7 +31,11 @@ app.post('/uploads', checkAuth, upload.single('image'), (req, res) => {
 });
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 app.use('/uploads', express.static('uploads'));
 
 app.use('/auth', authRoute);
